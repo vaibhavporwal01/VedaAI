@@ -1,0 +1,15 @@
+node_modules
+.next
+.vercel
+.turbo
+dist
+.npm-cache
+.design-audit-assets
+.env
+.env.local
+.env.*.local
+coverage
+uploads
+*.log
+*.tsbuildinfo
+.DS_Store
