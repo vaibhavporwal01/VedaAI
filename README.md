@@ -121,3 +121,16 @@ npm run build --workspace frontend
 npm run build --workspace backend
 ```
 
+## Deployment
+
+VedaAI is deployed as a full-stack application with separate services for the frontend, backend, database, and queue.
+
+### Live Deployment Architecture
+
+- **Frontend:** Vercel
+- **Backend API:** Render Web Service
+- **Generation Worker:** Render, started with the backend service
+- **Database:** MongoDB Atlas
+- **Redis / Job Queue:** Render Key Value using a `rediss://` connection
+- **AI Provider:** Google Gemini API
+
