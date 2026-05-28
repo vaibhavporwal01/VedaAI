@@ -14,11 +14,11 @@ export function AssignmentCard({ assignment, onDelete }: AssignmentCardProps) {
   const router = useRouter();
 
   return (
-    <article className="relative h-[132px] rounded-[28px] bg-white p-5 shadow-card transition hover:-translate-y-0.5 hover:shadow-realistic desktop:h-[162px] desktop:rounded-[24px] desktop:p-6">
+    <article className="rounded-[28px] bg-white p-5 shadow-card transition hover:-translate-y-0.5 hover:shadow-realistic desktop:rounded-[24px] desktop:p-6">
       <div className="flex items-start justify-between gap-3">
         <button
           type="button"
-          className="focus-ring max-w-[260px] rounded text-left text-[26px] font-bold leading-none text-ink hover:underline desktop:max-w-[430px] desktop:text-2xl"
+          className="focus-ring min-w-0 rounded text-left text-[26px] font-bold leading-none text-ink hover:underline desktop:max-w-[430px] desktop:text-2xl"
           onClick={() => router.push(`/assignments/${assignment.id}`)}
         >
           {assignment.title}
@@ -30,10 +30,10 @@ export function AssignmentCard({ assignment, onDelete }: AssignmentCardProps) {
           </DropdownItem>
         </Dropdown>
       </div>
-      <p className="mt-3 max-w-[260px] truncate text-sm font-medium text-mutedMcp desktop:max-w-[430px]">
+      <p className="mt-3 line-clamp-2 max-w-[260px] text-sm font-medium text-mutedMcp desktop:max-w-[430px] desktop:line-clamp-1">
         {assignment.subject} - {assignment.grade} - {assignment.topic}
       </p>
-      <div className="absolute bottom-5 left-5 right-5 grid grid-cols-2 gap-3 text-[15px] leading-[19px] text-mutedMcp desktop:bottom-6 desktop:left-6 desktop:right-6 desktop:flex desktop:items-center desktop:justify-between desktop:text-sm">
+      <div className="mt-4 grid gap-3 text-[15px] leading-[19px] text-mutedMcp desktop:flex desktop:items-center desktop:justify-between desktop:text-sm">
         <p>
           <span className="font-bold text-ink">Assigned on : </span>
           {formatDate(assignment.createdAt)}

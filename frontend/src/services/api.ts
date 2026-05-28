@@ -2,6 +2,9 @@ import type { Assignment, AssignmentCreateResponse, JobState } from "@/types";
 import { localAssignments } from "./localAssignments";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000";
+const ENABLE_LOCAL_FALLBACK =
+  process.env.NEXT_PUBLIC_ENABLE_LOCAL_FALLBACK === "true" ||
+  (process.env.NODE_ENV !== "production" && /^(http:\/\/localhost|http:\/\/127\.0\.0\.1)/i.test(API_URL));
 
 class ApiRequestError extends Error {
   constructor(
@@ -39,7 +42,7 @@ async function withLocalFallback<T>(remote: () => Promise<T>, local: () => T | u
   try {
     return await remote();
   } catch (error) {
-    if (shouldUseLocalFallback(error)) {
+    if (ENABLE_LOCAL_FALLBACK && shouldUseLocalFallback(error)) {
       const result = local();
       if (result === undefined || result === null) {
         throw new Error(missingMessage);

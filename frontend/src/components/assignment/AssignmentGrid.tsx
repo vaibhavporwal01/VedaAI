@@ -45,13 +45,17 @@ export function AssignmentGrid({ assignments, onDelete }: AssignmentGridProps) {
         </div>
       </div>
 
-      <div className="mb-6 flex h-16 items-center rounded-[18px] bg-white px-4 shadow-soft desktop:mb-4 desktop:w-full">
-        <button className="focus-ring flex items-center gap-2 rounded-full text-sm font-bold text-disabled hover:text-ink" type="button" onClick={nextFilter}>
+      <div className="mb-6 flex flex-col gap-3 rounded-[18px] bg-white p-4 shadow-soft desktop:mb-4 desktop:h-16 desktop:flex-row desktop:items-center desktop:px-4 desktop:py-0 desktop:w-full">
+        <button
+          className="focus-ring flex items-center gap-2 self-start rounded-full text-sm font-bold text-disabled hover:text-ink desktop:self-auto"
+          type="button"
+          onClick={nextFilter}
+        >
           <SlidersHorizontal size={20} />
           <span className="desktop:hidden">{filter === "all" ? "Filter" : filter}</span>
           <span className="hidden desktop:inline">{filter === "all" ? "Filter By" : filter === "ready" ? "Ready Papers" : "Pending Papers"}</span>
         </button>
-        <div className="ml-auto w-[228px] desktop:w-[380px]">
+        <div className="w-full desktop:ml-auto desktop:w-[380px]">
           <div className="relative">
             <Search className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-disabled" size={20} />
             <Input
